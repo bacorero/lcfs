@@ -3,45 +3,27 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="users view large-9 medium-8 columns content">
-    <h3><?= h($user->id) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Usuario') ?></th>
-            <td><?= h($user->usuario) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Role') ?></th>
-            <td><?= h($user->role) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Passwor') ?></th>
-            <td><?= h($user->passwor) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($user->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($user->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($user->modified) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Active') ?></th>
-            <td><?= $user->active ? __('Yes') : __('No'); ?></td>
-        </tr>
-    </table>
+<div class="row">
+
+    <div class="col-md-6 col-md-offset-3">
+       
+        <?= $this->Form->create($user) ?>
+        <fieldset>
+            <legend><?= __('Usuario') ?></legend>
+            <?php
+                echo $this->Form->control('usuario',['Usuario']);
+                echo $this->Form->control('role',['options' => ['admin' => 'admin', 'user' => 'user']]);
+                echo $this->Form->control('passwor',['fbsql_password(link_identifier)']);
+                echo $this->Form->control('active');
+            ?>
+        </fieldset>
+        <div>
+            <?= $this->Html->link('Volver', ['action' => 'index'], ['class' => 'btn btn-sm btn-info']) ?>
+            <?= $this->Html->link('Editar', ['action' => 'edit', $user->id], ['class' => 'btn btn-sm btn-primary']) ?>
+            <?= $this->Form->postLink('Eliminar', ['action' => 'delete', $user->id], ['confirm' => 'Eliminar usuario ?', 'class' => 'btn btn-sm btn-danger']) ?>
+        </div>
+        <?= $this->Form->end() ?>
+
+
+    </div>
 </div>

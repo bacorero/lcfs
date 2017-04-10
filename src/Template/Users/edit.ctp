@@ -3,29 +3,34 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="users form large-9 medium-8 columns content">
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Edit User') ?></legend>
-        <?php
-            echo $this->Form->control('usuario');
-            echo $this->Form->control('role');
-            echo $this->Form->control('passwor');
-            echo $this->Form->control('active');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+
+<div class="row">
+
+    <div class="col-md-6 col-md-offset-3">
+       
+        <?= $this->Form->create($user) ?>
+        <fieldset>
+            <legend><?= __('Editar suario') ?></legend>
+            <?php
+                echo $this->Form->control('usuario',['Usuario']);
+                echo $this->Form->control('role',['options' => ['admin' => 'admin', 'user' => 'user']]);
+                echo $this->Form->control('passwor',['fbsql_password(link_identifier)']);
+                echo $this->Form->control('active');
+            ?>
+        </fieldset>
+        <div>
+            <?= $this->Form->button(__('Guardar', ['class' => 'btn btn-sm btn-info'])) ?>
+            <?= $this->Form->postLink('Eliminar', ['action' => 'delete', $user->id], ['confirm' => 'Eliminar usuario ?', 'class' => 'btn btn-sm btn-danger']) ?>
+            <?= $this->Html->link('Cancelar', ['action' => 'index'], ['class' => 'btn btn-sm btn-info']) ?>
+        </div>
+        <?= $this->Form->end() ?>
+
+
+    </div>
 </div>
+
+
+
+
+
+
