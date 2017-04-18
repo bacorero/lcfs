@@ -1,4 +1,5 @@
 <?php
+//session_start();
 /**
   * @var \App\View\AppView $this
   */
@@ -6,6 +7,7 @@
 
 <div class="row">
     <div class="col-md-12">
+    <?php if(isset ($_SESSION['usuario']) and $_SESSION['rol'] == "admin"): ?>
         <div class="page-header">
             <h2>Usuarios</h2>
         </div>
@@ -41,6 +43,10 @@
         <?php endforeach; ?>
             </tbody>
             </table>
+
+            <?php echo $_SESSION['rol'] ?>
+            <?php echo $_SESSION['usuario'] ?>
+            <?php echo $_SESSION['password'] ?>
         </div>
 
         <div class="paginator">
@@ -51,6 +57,37 @@
             </ul>
             <p><?= $this->Paginator->counter() ?></p>
         </div>
+
+    <?php else: ?>
+        <div class="container">
+
+            <div class="row" style="margin-top:20px">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                    
+                    <?= $this->Form->create() ?>
+                        <fieldset>
+                            <h2>Login</h2>
+                            <hr class="colorgraph">
+                            <div class="form-group">
+                                <?= $this->Form->input('usuario', ['class' => 'form-control input-lg', 'placeholder' => 'Usuario', 'label' => false, 'required']) ?>
+                            </div>
+                            <div class="form-group">
+                                <?= $this->Form->input('passwor', ['class' => 'form-control input-lg', 'placeholder' => 'Contraseña', 'label' => false, 'required']) ?>
+                            </div>
+                            <hr class="colorgraph">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <?= $this->Form->button(__('Login')) ?>
+                                </div>
+                                
+                            </div>
+                        </fieldset>
+                    <?= $this->Form->end() ?>
+                </div>
+            </div>
+
+</div>
+    <?php endif; ?>
     </div>
 </div>
 

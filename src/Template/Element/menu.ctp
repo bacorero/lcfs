@@ -7,13 +7,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <?= $this->Html->link('Home', ['controller' => 'Users', 'action' => 'index'], ['class' => 'navbar-brand']) ?>
+            <?= $this->Html->link('POCAKE', ['controller' => 'Users', 'action' => 'index'], ['class' => 'navbar-brand']) ?>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-            <?php //if(true): ?>
+            <?php if($_SESSION['rol'] == 'admin'): ?>
                 <ul class="nav navbar-nav">
-                    <?php //if(true): ?>
+                    <?php if($_SESSION['rol'] == "admin"): ?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usuarios <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -25,23 +25,23 @@
                             </li>
                         </ul>
                     </li>
-                    <?php //endif; ?>
+                    <?php endif; ?>
                     <li>
-                        <?php //$this->Html->link('Mi lista', ['controller' => 'users', 'action' => 'view']) ?>
+                        
                     </li>
                 </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>
-                   <?php //$this->Html->link('Salir', ['controller' => 'Users', 'action' => 'logout']) ?>
+                   <?= $this->Html->link('Salir', ['controller' => 'Users', 'action' => 'logout']) ?>
               </li>
             </ul>
-            <?php //else: ?>
+            <?php else: ?>
             <ul class="nav navbar-nav navbar-right">
               <li>
-                   <?php //$this->Html->link('Registrarse', ['controller' => 'Users', 'action' => 'add']) ?>
+                   <?= $this->Html->link('Registrarse', ['controller' => 'Users', 'action' => 'add']) ?>
               </li>
             </ul>
-            <?php //endif; ?>
+            <?php endif; ?>
         </div>
     </div>
 </nav>

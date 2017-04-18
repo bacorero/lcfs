@@ -15,13 +15,53 @@ class UsersController extends AppController
      * Index method
      *
      * @return \Cake\Network\Response|null
-     */
+     */ 
     public function index()
     {
-        $users = $this->paginate($this->Users);
+        session_start();
+        $encontrado = false;
+        $_SESSION['rol'] = "";
 
-        $this->set(compact('users'));
-        $this->set('_serialize', ['users']);
+        if ($this->request->is(['patch', 'post', 'put']))
+            {
+                //Recogemos los valores del formulario
+                $_SESSION['usuario'] = $_REQUEST['usuario'];
+                $_SESSION['password'] = $_REQUEST['passwor'];
+                return $this->redirect(['action' => 'index']);
+            }
+
+        if(isset($_SESSION['usuario']) and isset($_SESSION['password']))
+        {
+            //$encontrado = true;
+            $usuarios = $this->Users->find('all'); 
+            foreach ($usuarios as $user) 
+            {
+                if($user->usuario == $_SESSION['usuario'])            //En caso de coincidir usuario
+                {
+                    if($user->passwor == $_SESSION['password'])       //En caso de coincidir la contraseña
+                    {
+                        $_SESSION['rol'] = $user->role; 
+                        $encontrado = true;  
+                    }
+                }
+            }
+            if ($encontrado)
+            {
+                $users = $this->paginate($this->Users);     //Lista todos los usuarios   
+                $this->set(compact('users'));
+                $this->set('_serialize', ['users']);
+            }
+            else
+            {
+                $this->Flash->error(__('Nombre de usuario o contraseña incorrectos'));
+            }
+        }
+
+        else 
+        {
+            
+            
+        }
     }
 
     /**
@@ -104,6 +144,16 @@ class UsersController extends AppController
             $this->Flash->error(__('The user could not be deleted. Please, try again.'));
         }
 
+        return $this->redirect(['action' => 'index']);
+    }
+
+    public function logout()
+    {
+        session_start();
+        unset($_SESSION['usuario']); 
+        unset($_SESSION['password']);
+        unset($_SESSION['rol']);
+        session_destroy();
         return $this->redirect(['action' => 'index']);
     }
 }
