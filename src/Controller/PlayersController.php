@@ -18,9 +18,8 @@ class PlayersController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Teams']
-        ];
+        session_start();
+        //$this->paginate = ['contain' => ['Teams']];
         $players = $this->paginate($this->Players);
 
         $this->set(compact('players'));
@@ -36,9 +35,8 @@ class PlayersController extends AppController
      */
     public function view($id = null)
     {
-        $player = $this->Players->get($id, [
-            'contain' => ['Teams']
-        ]);
+        session_start();
+        $player = $this->Players->get($id); //, ['contain' => ['Teams']]);
 
         $this->set('player', $player);
         $this->set('_serialize', ['player']);
@@ -51,15 +49,16 @@ class PlayersController extends AppController
      */
     public function add()
     {
+        session_start();
         $player = $this->Players->newEntity();
         if ($this->request->is('post')) {
             $player = $this->Players->patchEntity($player, $this->request->getData());
             if ($this->Players->save($player)) {
-                $this->Flash->success(__('The player has been saved.'));
+                $this->Flash->success(__('El jugador ha sido eliminado del sistema.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The player could not be saved. Please, try again.'));
+            $this->Flash->error(__('No se pudo eliminar el jugador del sistema. Inténtelo de nuevo'));
         }
         $teams = $this->Players->Teams->find('list', ['limit' => 200]);
         $this->set(compact('player', 'teams'));
@@ -75,6 +74,7 @@ class PlayersController extends AppController
      */
     public function edit($id = null)
     {
+        session_start();
         $player = $this->Players->get($id, [
             'contain' => []
         ]);
@@ -101,6 +101,7 @@ class PlayersController extends AppController
      */
     public function delete($id = null)
     {
+        session_start();
         $this->request->allowMethod(['post', 'delete']);
         $player = $this->Players->get($id);
         if ($this->Players->delete($player)) {

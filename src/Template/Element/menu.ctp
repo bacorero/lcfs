@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <?= $this->Html->link('POCAKE', ['controller' => 'Users', 'action' => 'index'], ['class' => 'navbar-brand']) ?>
+            <?= $this->Html->link('INICIO', ['controller' => 'Users', 'action' => 'index'], ['class' => 'navbar-brand']) ?>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
@@ -22,6 +22,24 @@
                             </li>
                             <li>
                                 <?=  $this->Html->link('Crear usuario', ['controller' => 'Users', 'action' => 'add']) ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <?php endif; ?>
+                    <li>
+                        
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <?php if($_SESSION['rol'] == "admin"): ?>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Jugadores <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <?=  $this->Html->link('Listar jugadores', ['controller' => 'Players', 'action' => 'index']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Crear jugador', ['controller' => 'Players', 'action' => 'add']) ?>
                             </li>
                         </ul>
                     </li>

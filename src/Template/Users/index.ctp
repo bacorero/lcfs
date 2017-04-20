@@ -37,6 +37,7 @@
                 <td><?= h($user->modified) ?></td>
                 <td>
                     <?= $this->Html->link('Ver', ['action' => 'view', $user->id], ['class' => 'btn btn-sm btn-info']) ?>
+                    <?= $this->Form->postLink('Eliminar', ['action' => 'delete', $user->id], ['confirm' => 'Eliminar usuario ?', 'class' => 'btn btn-sm btn-danger']) ?>
                     
                 </td>
             </tr>
@@ -47,6 +48,7 @@
             <?php echo $_SESSION['rol'] ?>
             <?php echo $_SESSION['usuario'] ?>
             <?php echo $_SESSION['password'] ?>
+            <?php echo $_SESSION['user'] ?>
         </div>
 
         <div class="paginator">
