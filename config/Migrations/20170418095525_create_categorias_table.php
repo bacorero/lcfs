@@ -27,6 +27,8 @@ class CreateCategoriasTable extends AbstractMigration
      */
     public function change()
     {
-
+        $table=$this->table('categorias');
+        $table->addColumn('nombre','string',array('limit' => 100))
+              ->create();
     }
 }

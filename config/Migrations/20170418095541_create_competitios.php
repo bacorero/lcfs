@@ -27,6 +27,12 @@ class CreateCompetitios extends AbstractMigration
      */
     public function change()
     {
-
+        $table=$this->table('competitios');
+        $table->addColumn('nombre','string',array('limit' => 100))
+              ->addColumn('temporada','string',array('limit' => 100))
+              ->addColumn('created','datetime')
+              ->addColumn('modified','datetime')
+              ->addColumn('categoria_id','integer',array('limit' => 11))
+              ->create();
     }
 }

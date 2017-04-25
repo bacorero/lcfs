@@ -18,7 +18,7 @@
     </ul>
 </nav>
 <div class="players form large-9 medium-8 columns content">
-    <?= $this->Form->create($player) ?>
+    <?= $this->Form->create($player,['type' => 'file']) ?>
     <fieldset>
         <legend><?= __('Edit Player') ?></legend>
         <?php
@@ -39,8 +39,8 @@
             echo $this->Form->control('p_jugados');
             echo $this->Form->control('p_sancionados');
             echo $this->Form->control('dorsal');
-            echo $this->Form->control('photo');
-            echo $this->Form->control('photo_dir');
+            echo $this->Form->control('photo',['type' => 'file']);
+            
             echo $this->Form->control('team_id', ['options' => $teams]);
         ?>
     </fieldset>

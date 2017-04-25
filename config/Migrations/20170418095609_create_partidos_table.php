@@ -27,6 +27,18 @@ class CreatePartidosTable extends AbstractMigration
      */
     public function change()
     {
-
+        $table=$this->table('partidos');
+        $table->addColumn('nombre','string',array('limit' => 100))
+              ->addColumn('local','string',array('limit' => 100))
+              ->addColumn('visitante','string',array('limit' => 100))
+              ->addColumn('fecha','date')
+              ->addColumn('hora','time')
+              ->addColumn('arbitro_id','integer',array('limit' => 11))
+              ->addColumn('campo','string',array('limit' => 100))
+              ->addColumn('acta_id','integer',array('limit' => 11))
+              ->addColumn('team_id_l','integer',array('limit' => 11))
+              ->addColumn('team_id_v','integer',array('limit' => 11))
+              ->addColumn('jornada_id','integer',array('limit' => 11))
+              ->create();
     }
 }

@@ -16,7 +16,8 @@
                 echo $this->Form->control('active');
             ?>
         </fieldset>
-        <?= $this->Form->button(__('Submit')) ?>
+        <?= $this->Form->button('Crear') ?>
+        <?= $this->Html->link('Cancelar', ['action' => 'index'], ['class' => 'btn btn-sm btn-info']) ?>
         <?= $this->Form->end() ?>
     </div>
 </div>

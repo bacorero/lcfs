@@ -222,3 +222,5 @@ if (Configure::read('debug')) {
 }
 
 Plugin::load('BootstrapUI');
+
+Plugin::load('Proffer');

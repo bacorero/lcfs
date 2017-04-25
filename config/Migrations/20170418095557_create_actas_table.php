@@ -27,6 +27,14 @@ class CreateActasTable extends AbstractMigration
      */
     public function change()
     {
-
+        $table=$this->table('actas');
+        $table->addColumn('goles_local','integer',array('limit' => 11))
+              ->addColumn('goles_visitante','integer',array('limit' => 11))
+              ->addColumn('t_amarillas','integer',array('limit' => 11))
+              ->addColumn('t_rojas','integer',array('limit' => 11))
+              ->addColumn('incidencias','string')
+              ->addColumn('campo','string',array('limit' => 100))
+              ->addColumn('localidad','string',array('limit' => 100))
+              ->create();
     }
 }

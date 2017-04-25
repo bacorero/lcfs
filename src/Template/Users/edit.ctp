@@ -20,7 +20,6 @@
         </fieldset>
         <div>
             <?= $this->Form->button(__('Guardar', ['class' => 'btn btn-sm btn-info'])) ?>
-            <?= $this->Form->postLink('Eliminar', ['action' => 'delete', $user->id], ['confirm' => 'Eliminar usuario ?', 'class' => 'btn btn-sm btn-danger']) ?>
             <?= $this->Html->link('Cancelar', ['action' => 'index'], ['class' => 'btn btn-sm btn-info']) ?>
         </div>
         <?= $this->Form->end() ?>
