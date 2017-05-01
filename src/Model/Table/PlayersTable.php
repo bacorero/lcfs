@@ -54,11 +54,13 @@ class PlayersTable extends Table
             'square' => [   // Define the prefix of your thumbnail
                 'w' => 200, // Width
                 'h' => 200, // Height
+                //'crop' => true,
                 'jpeg_quality'  => 100
             ],
             'portrait' => [     // Define a second thumbnail
-                'w' => 100,
-                'h' => 300
+                'w' => 50,
+                'h' => 50,
+                //'crop' => true
             ],
         ],
         'thumbnailMethod' => 'gd'   // Options are Imagick or Gd
@@ -85,7 +87,7 @@ class PlayersTable extends Table
         $validator
             ->requirePresence('apellido', 'create')
             ->notEmpty('apellido');
-
+/*
         $validator
             ->requirePresence('direccion', 'create')
             ->notEmpty('direccion');
@@ -93,11 +95,12 @@ class PlayersTable extends Table
         $validator
             ->requirePresence('pablacion', 'create')
             ->notEmpty('pablacion');
+*/
 
         $validator
             ->requirePresence('dni', 'create')
             ->notEmpty('dni');
-
+/*
         $validator
             ->requirePresence('telefono', 'create')
             ->notEmpty('telefono');
@@ -159,7 +162,7 @@ class PlayersTable extends Table
             ->requirePresence('photo', 'create')
             ->notEmpty('photo');
 
-    
+    */
 
         return $validator;
     }

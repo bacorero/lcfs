@@ -53,12 +53,20 @@ class PlayersController extends AppController
         $player = $this->Players->newEntity();
         if ($this->request->is('post')) {
             $player = $this->Players->patchEntity($player, $this->request->getData());
+
+            //En caso de no haber seleccionado ninguna imagen ponemos la de por defecto
+            if($player->photo == NULL)
+            {
+                $player->photo_dir = '59e562bc-93c2-4fce-b83c-3f020c4aff93';
+                $player->photo =  'photo_2993.jpg';
+            }
+
             if ($this->Players->save($player)) {
-                $this->Flash->success(__('El jugador ha sido eliminado del sistema.'));
+                $this->Flash->success(__('Jugador correctamente creado.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('No se pudo eliminar el jugador del sistema. Inténtelo de nuevo'));
+            $this->Flash->error(__('No se pudo crear el jugador en el sistema. Inténtelo de nuevo'));
         }
         $teams = $this->Players->Teams->find('list', ['limit' => 200]);
         $this->set(compact('player', 'teams'));
@@ -78,14 +86,32 @@ class PlayersController extends AppController
         $player = $this->Players->get($id, [
             'contain' => []
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
+
+        //En caso de no editar la foto anterior nos la guardamos para volverla a grabar en la BD
+        $foto = $player->photo;
+        $foto_dir = $player->photo_dir;
+
+        if ($this->request->is (['patch', 'post', 'put'])) {
             $player = $this->Players->patchEntity($player, $this->request->getData());
+
+            //Vamos a mirar si el usuario ha modificado o no la foto 
+            if($player->photo == $foto)
+            {  
+                $player->photo_dir = $foto_dir;
+                $player->photo =  $foto;
+            }
+            else
+            {
+                $player->photo_dir = $player->photo_dir;
+                $player->photo =  $player->photo;
+            }
+
             if ($this->Players->save($player)) {
-                $this->Flash->success(__('The player has been saved.'));
+                $this->Flash->success(__('El Jugador ha sido modificado correctamente.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The player could not be saved. Please, try again.'));
+            $this->Flash->error(__('El jugador no ha podido ser modificado. Por favor, inténtelo de nuevo.'));
         }
         $teams = $this->Players->Teams->find('list', ['limit' => 200]);
         $this->set(compact('player', 'teams'));

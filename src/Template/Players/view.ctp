@@ -3,111 +3,48 @@
   * @var \App\View\AppView $this
   */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('Edit Player'), ['action' => 'edit', $player->id]) ?> </li>
-        <li><?= $this->Form->postLink(__('Delete Player'), ['action' => 'delete', $player->id], ['confirm' => __('Are you sure you want to delete # {0}?', $player->id)]) ?> </li>
-        <li><?= $this->Html->link(__('List Players'), ['action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Player'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('List Teams'), ['controller' => 'Teams', 'action' => 'index']) ?> </li>
-        <li><?= $this->Html->link(__('New Team'), ['controller' => 'Teams', 'action' => 'add']) ?> </li>
-    </ul>
-</nav>
-<div class="players view large-9 medium-8 columns content">
-    <h3><?= h($player->id) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th scope="row"><?= __('Nombre') ?></th>
-            <td><?= h($player->nombre) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Apellido') ?></th>
-            <td><?= h($player->apellido) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Direccion') ?></th>
-            <td><?= h($player->direccion) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Pablacion') ?></th>
-            <td><?= h($player->pablacion) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Telefono') ?></th>
-            <td><?= h($player->telefono) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Nacionalidad') ?></th>
-            <td><?= h($player->nacionalidad) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Observaciones') ?></th>
-            <td><?= h($player->observaciones) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Photo') ?></th>
-            <td><?= h($player->photo) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Photo Dir') ?></th>
-            <td><?= h($player->photo_dir) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Team') ?></th>
-            <td><?= $player->has('team') ? $this->Html->link($player->team->id, ['controller' => 'Teams', 'action' => 'view', $player->team->id]) : '' ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($player->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('G Recibidos') ?></th>
-            <td><?= $this->Number->format($player->g_recibidos) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('T Amarillas') ?></th>
-            <td><?= $this->Number->format($player->t_amarillas) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('T Rojas') ?></th>
-            <td><?= $this->Number->format($player->t_rojas) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('T Acumuladas') ?></th>
-            <td><?= $this->Number->format($player->t_acumuladas) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Goles') ?></th>
-            <td><?= $this->Number->format($player->goles) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('P Jugados') ?></th>
-            <td><?= $this->Number->format($player->p_jugados) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('P Sancionados') ?></th>
-            <td><?= $this->Number->format($player->p_sancionados) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Dorsal') ?></th>
-            <td><?= $this->Number->format($player->dorsal) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('F Nacimiento') ?></th>
-            <td><?= h($player->f_nacimiento) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Created') ?></th>
-            <td><?= h($player->created) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Modified') ?></th>
-            <td><?= h($player->modified) ?></td>
-        </tr>
-    </table>
+
+
+<div class="container-fluid">
     <div class="row">
-        <h4><?= __('Dni') ?></h4>
-        <?= $this->Text->autoParagraph(h($player->dni)); ?>
+        <div class="col-md-2" style="margin:20px;">
+            <?= $this->Html->image('../files/players/photo/'. $player->photo_dir .
+                        '/square_' . $player->photo, ['alt' => $player->nombre, 'class' => 'img-responsive img-thumnail center-block']) ?>
+            <?= $this->Html->link('Volver', ['action' => 'index'], ['class' => 'btn btn-sm btn-info']) ?>
+            <?= $this->Html->link('Editar', ['action' => 'edit', $player->id], ['class' => 'btn btn-sm btn-primary']) ?>
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+            <div class="panel panel-default">
+              <!-- Default panel contents -->
+              <div class="panel-heading">Datos del Jugador <?php echo $player->nombre; ?></div>
+              
+
+              <!-- List group -->
+              <ul class="list-group">
+                <li class="list-group-item">Nombre - <?php echo $player->nombre; ?></li>
+                <li class="list-group-item">Apellido - <?php echo $player->apellido; ?></li>
+                <li class="list-group-item">Direccion - <?php echo $player->direccion; ?></li>
+                <li class="list-group-item">Poblacion - <?php echo $player->pablacion; ?></li>
+                <li class="list-group-item">Telefono - <?php echo $player->telefono; ?></li>
+                <li class="list-group-item">Nacionalidad - <?php echo $player->nacionalidad; ?></li>
+                <li class="list-group-item">Observaciones - <?php echo $player->observaciones; ?></li>
+                <li class="list-group-item">Photo - <?php echo $player->Photo; ?></li>
+                <li class="list-group-item">Team - <?php echo $player->nombre; ?></li>
+                <li class="list-group-item">Goles Recibidos - <?php echo $player->g_recibidos; ?></li>
+                <li class="list-group-item">Tarjetas Amarillas - <?php echo $player->t_amarillas; ?></li>
+                <li class="list-group-item">Tarjetas Rojas - <?php echo $player->t_rojas; ?></li>
+                <li class="list-group-item">Tarjetas Acumuladas - <?php echo $player->t_acumuladas; ?></li>
+                <li class="list-group-item">Goles - <?php echo $player->goles; ?></li>
+                <li class="list-group-item">Partidos Jugados - <?php echo $player->p_jugados; ?></li>
+                <li class="list-group-item">Partidos Sancionados - <?php echo $player->p_sancionados; ?></li>
+                <li class="list-group-item">Dorsal - <?php echo $player->dorsal; ?></li>
+                <li class="list-group-item">Fecha Nacimiento - <?php echo $player->f_nacimiento; ?></li>
+                <li class="list-group-item">Fecha de creación - <?php echo $player->created; ?></li>
+                <li class="list-group-item">Fecha última modificación - <?php echo $player->modified; ?></li>
+                <li class="list-group-item"><?= $this->Html->link('Volver', ['action' => 'index'], ['class' => 'btn btn-sm btn-info']) ?>
+            <?= $this->Html->link('Editar', ['action' => 'edit', $player->id], ['class' => 'btn btn-sm btn-primary']) ?> </li>
+              </ul>
+            </div>
+        </div>
     </div>
 </div>

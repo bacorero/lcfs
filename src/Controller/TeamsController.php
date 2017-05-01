@@ -18,6 +18,7 @@ class TeamsController extends AppController
      */
     public function index()
     {
+        session_start();
         $this->paginate = [
             'contain' => ['Categorias']
         ];
@@ -36,6 +37,7 @@ class TeamsController extends AppController
      */
     public function view($id = null)
     {
+        session_start();
         $team = $this->Teams->get($id, [
             'contain' => ['Categorias', 'Players']
         ]);
@@ -51,6 +53,7 @@ class TeamsController extends AppController
      */
     public function add()
     {
+        session_start();
         $team = $this->Teams->newEntity();
         if ($this->request->is('post')) {
             $team = $this->Teams->patchEntity($team, $this->request->getData());
@@ -75,6 +78,7 @@ class TeamsController extends AppController
      */
     public function edit($id = null)
     {
+        session_start();
         $team = $this->Teams->get($id, [
             'contain' => []
         ]);
@@ -101,6 +105,7 @@ class TeamsController extends AppController
      */
     public function delete($id = null)
     {
+        session_start();
         $this->request->allowMethod(['post', 'delete']);
         $team = $this->Teams->get($id);
         if ($this->Teams->delete($team)) {

@@ -26,3 +26,7 @@
             <?= $this->Html->link('Editar', ['action' => 'edit', $user->id], ['class' => 'btn btn-sm btn-primary']) ?> </li>
               </ul>
             </div>
+        </div>
+  </div>
+</div>
+
