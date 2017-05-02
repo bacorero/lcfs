@@ -12,16 +12,16 @@
             <legend><?= __('Crear jugador') ?></legend>
             <?php
                 echo $this->Form->control('nombre');
-            echo $this->Form->control('apellido');
-            echo $this->Form->control('direccion');
-            echo $this->Form->control('pablacion');
-            echo $this->Form->control('dni');
-            echo $this->Form->control('telefono');
-            echo $this->Form->control('nacionalidad');
-            echo $this->Form->control('f_nacimiento');
-            echo $this->Form->control('observaciones');
-            
-            echo $this->Form->input('photo',['type' => 'file','class' => 'filestyle','data-buttonName' => 'btn-primary','data-buttonText' => 'Examinar']);
+                echo $this->Form->control('apellido');
+                echo $this->Form->control('direccion');
+                echo $this->Form->control('pablacion');
+                echo $this->Form->control('dni');
+                echo $this->Form->control('telefono');
+                echo $this->Form->control('nacionalidad');
+                echo $this->Form->control('f_nacimiento');
+                echo $this->Form->control('observaciones');
+                
+                echo $this->Form->input('photo',['type' => 'file','class' => 'filestyle','data-buttonName' => 'btn-primary','data-buttonText' => 'Examinar']);
             ?>
         </fieldset>
         

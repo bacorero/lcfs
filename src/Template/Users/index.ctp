@@ -45,10 +45,6 @@
             </tbody>
             </table>
 
-            <?php echo $_SESSION['rol'] ?>
-            <?php echo $_SESSION['usuario'] ?>
-            <?php echo $_SESSION['password'] ?>
-            <?php echo $_SESSION['user'] ?>
         </div>
 
         <div class="paginator">

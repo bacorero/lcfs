@@ -35,6 +35,8 @@ class CreateActasTable extends AbstractMigration
               ->addColumn('incidencias','string')
               ->addColumn('campo','string',array('limit' => 100))
               ->addColumn('localidad','string',array('limit' => 100))
+              ->addColumn('created','datetime')
+              ->addColumn('modified','datetime')
               ->create();
     }
 }

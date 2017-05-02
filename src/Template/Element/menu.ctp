@@ -51,6 +51,24 @@
                 <ul class="nav navbar-nav">
                     <?php if($_SESSION['rol'] == "admin"): ?>
                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Árbitros <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <?=  $this->Html->link('Listar árbitros', ['controller' => 'Arbitros', 'action' => 'index']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Crear árbitro', ['controller' => 'Arbitros', 'action' => 'add']) ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <?php endif; ?>
+                    <li>
+                        
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <?php if($_SESSION['rol'] == "admin"): ?>
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Equipos <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
@@ -58,6 +76,24 @@
                             </li>
                             <li>
                                 <?=  $this->Html->link('Crear equipo', ['controller' => 'Teams', 'action' => 'add']) ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <?php endif; ?>
+                    <li>
+                        
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <?php if($_SESSION['rol'] == "admin"): ?>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorías <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <?=  $this->Html->link('Listar categorías', ['controller' => 'Categorias', 'action' => 'index']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Crear categoría', ['controller' => 'Categorias', 'action' => 'add']) ?>
                             </li>
                         </ul>
                     </li>

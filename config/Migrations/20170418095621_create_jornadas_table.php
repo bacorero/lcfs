@@ -36,6 +36,8 @@ class CreateJornadasTable extends AbstractMigration
               ->addColumn('arbitro_id','integer',array('limit' => 11))
               ->addColumn('campo','string',array('limit' => 100))
               ->addColumn('acta_id','integer',array('limit' => 11))
+              ->addColumn('created','datetime')
+              ->addColumn('modified','datetime')
               ->create();
     }
 }

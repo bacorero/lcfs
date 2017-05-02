@@ -39,6 +39,8 @@ class CreatePartidosTable extends AbstractMigration
               ->addColumn('team_id_l','integer',array('limit' => 11))
               ->addColumn('team_id_v','integer',array('limit' => 11))
               ->addColumn('jornada_id','integer',array('limit' => 11))
+              ->addColumn('created','datetime')
+              ->addColumn('modified','datetime')
               ->create();
     }
 }

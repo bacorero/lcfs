@@ -19,11 +19,13 @@ class PlayersController extends AppController
     public function index()
     {
         session_start();
-        //$this->paginate = ['contain' => ['Teams']];
-        $players = $this->paginate($this->Players);
 
+        //$this->paginate = ['contain' => ['Teams']];
+        
+        $players = $this->paginate($this->Players);
         $this->set(compact('players'));
         $this->set('_serialize', ['players']);
+        
     }
 
     /**
@@ -66,7 +68,7 @@ class PlayersController extends AppController
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('No se pudo crear el jugador en el sistema. Inténtelo de nuevo'));
+            $this->Flash->error(__('No se pudo crear el jugador en el sistema. Inténtelo de nuevo.'));
         }
         $teams = $this->Players->Teams->find('list', ['limit' => 200]);
         $this->set(compact('player', 'teams'));

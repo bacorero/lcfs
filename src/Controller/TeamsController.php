@@ -19,9 +19,9 @@ class TeamsController extends AppController
     public function index()
     {
         session_start();
-        $this->paginate = [
+        /*$this->paginate = [
             'contain' => ['Categorias']
-        ];
+        ];*/
         $teams = $this->paginate($this->Teams);
 
         $this->set(compact('teams'));
@@ -39,7 +39,7 @@ class TeamsController extends AppController
     {
         session_start();
         $team = $this->Teams->get($id, [
-            'contain' => ['Categorias', 'Players']
+            //'contain' => ['Categorias', 'Players']
         ]);
 
         $this->set('team', $team);
@@ -57,12 +57,18 @@ class TeamsController extends AppController
         $team = $this->Teams->newEntity();
         if ($this->request->is('post')) {
             $team = $this->Teams->patchEntity($team, $this->request->getData());
+            //En caso de no haber seleccionado ninguna imagen ponemos la de por defecto
+            if($team->photo == NULL)
+            {
+                $team->photo_dir = '03ffaa83-dfeb-4a02-8ad9-1ce72088be39';
+                $team->photo =  'photo_2991.jpg';
+            }
             if ($this->Teams->save($team)) {
-                $this->Flash->success(__('The team has been saved.'));
+                $this->Flash->success(__('Equipo correctamente creado.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The team could not be saved. Please, try again.'));
+            $this->Flash->error(__('No se pudo crear el jugador en el sistema. Inténtelo de nuevo'));
         }
         $categorias = $this->Teams->Categorias->find('list', ['limit' => 200]);
         $this->set(compact('team', 'categorias'));
@@ -82,14 +88,31 @@ class TeamsController extends AppController
         $team = $this->Teams->get($id, [
             'contain' => []
         ]);
+
+        //En caso de no editar la foto anterior nos la guardamos para volverla a grabar en la BD
+        $foto = $team->photo;
+        $foto_dir = $team->photo_dir;
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $team = $this->Teams->patchEntity($team, $this->request->getData());
+
+            //Vamos a mirar si el usuario ha modificado o no la foto 
+            if($team->photo == $foto)
+            {  
+                $team->photo_dir = $foto_dir;
+                $team->photo =  $foto;
+            }
+            else
+            {
+                $team->photo_dir = $team->photo_dir;
+                $team->photo =  $team->photo;
+            }
             if ($this->Teams->save($team)) {
-                $this->Flash->success(__('The team has been saved.'));
+                $this->Flash->success(__('El equipo ha sido modificado correctamente.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The team could not be saved. Please, try again.'));
+            $this->Flash->error(__('El equipo no ha podido ser modificado. Por favor, inténtelo de nuevo.'));
         }
         $categorias = $this->Teams->Categorias->find('list', ['limit' => 200]);
         $this->set(compact('team', 'categorias'));

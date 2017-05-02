@@ -27,6 +27,19 @@ class CreateArbitrosTable extends AbstractMigration
      */
     public function change()
     {
-
+        $table=$this->table('arbitros');
+        $table->addColumn('nombre','string',array('limit' => 100))
+              ->addColumn('apellido','string',array('limit' => 100))
+              ->addColumn('direccion','string',array('limit' => 100))
+              ->addColumn('poblacion','string',array('limit' => 100))
+              ->addColumn('dni','text',array('limit' => 9))
+              ->addColumn('telefono','string', array('limit'=>9))
+              ->addColumn('nacionalidad','string')
+              ->addColumn('f_nacimiento','date')
+              ->addColumn('photo','string')
+              ->addColumn('photo_dir','string')
+              ->addColumn('created','datetime')
+              ->addColumn('modified','datetime')
+              ->create();
     }
 }

@@ -48,6 +48,28 @@ class TeamsTable extends Table
         $this->hasMany('Players', [
             'foreignKey' => 'team_id'
         ]);
+
+        //Configuración de la subida de fotos
+        $this->addBehavior('Proffer.Proffer', [
+    'photo' => [    // The name of your upload field
+        'root' => WWW_ROOT . 'files', // Customise the root upload folder here, or omit to use the default
+        'dir' => 'photo_dir',   // The name of the field to store the folder
+        'thumbnailSizes' => [ // Declare your thumbnails
+            'square' => [   // Define the prefix of your thumbnail
+                'w' => 200, // Width
+                'h' => 200, // Height
+                //'crop' => true,
+                'jpeg_quality'  => 100
+            ],
+            'portrait' => [     // Define a second thumbnail
+                'w' => 50,
+                'h' => 50,
+                //'crop' => true
+            ],
+        ],
+        'thumbnailMethod' => 'gd'   // Options are Imagick or Gd
+    ]
+]);
     }
 
     /**
@@ -66,7 +88,7 @@ class TeamsTable extends Table
             ->requirePresence('nombre', 'create')
             ->notEmpty('nombre');
 
-        $validator
+        /*$validator
             ->requirePresence('contacto', 'create')
             ->notEmpty('contacto');
 
@@ -88,7 +110,7 @@ class TeamsTable extends Table
 
         $validator
             ->requirePresence('photo_dir', 'create')
-            ->notEmpty('photo_dir');
+            ->notEmpty('photo_dir'); */
 
         return $validator;
     }
