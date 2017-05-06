@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Players Controller
@@ -16,13 +17,21 @@ class PlayersController extends AppController
      *
      * @return \Cake\Network\Response|null
      */
+
+    
+
     public function index()
     {
         session_start();
-
+        
         //$this->paginate = ['contain' => ['Teams']];
         
+        // Vamos a recoger los nombres de los equipos para ver a que equipo pertenece
+        $query = TableRegistry::get('Teams');
+        $equipo = $query->find();
+        
         $players = $this->paginate($this->Players);
+        $this->set('equipo',$equipo);
         $this->set(compact('players'));
         $this->set('_serialize', ['players']);
         
@@ -40,7 +49,22 @@ class PlayersController extends AppController
         session_start();
         $player = $this->Players->get($id); //, ['contain' => ['Teams']]);
 
+        // Vamos a recoger los nombres de los equipos para ver a que equipo pertenece
+        //$equipo = NULL;
+        //$query = TableRegistry::get('Teams');
+        //$equipo = $query->find();
+        //$equipo->where(['id' => 4])->first();
+        /*
+        foreach ($equipos as $key) 
+        {
+            if($key->id == $player->team_id)
+            {
+                $equipo = $key->nombre;
+            }
+        }*/
+
         $this->set('player', $player);
+        //$this->set('equipo',$equipo);
         $this->set('_serialize', ['player']);
     }
 
@@ -139,5 +163,18 @@ class PlayersController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    //Función que ficha a un jugador en un determinado equipo
+    public function fichar($id = null){
+
+        session_start();
+        $player = $this->Players->get($id, [
+            'contain' => []
+        ]);
+        $query = TableRegistry::get('Teams');
+        $equipo = $query->find();
+
+
     }
 }

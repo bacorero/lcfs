@@ -60,7 +60,17 @@
         <div class="container">
 
             <div class="row" style="margin-top:20px">
-                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+
+            <!-- cuadro de los sponsores -->
+                <div class="col-xs-3 col-sm-3 col-md-3 sponsores">
+                </div>
+
+            <!-- Cuadro de los anuncios púplicos -->
+                <div class="col-xs-6 col-sm-6 col-md-6  publico">
+                </div>
+
+            <!--Cuadro de logueo -->
+                <div class="col-xs-3 col-sm-3 col-md-3">
                     
                     <?= $this->Form->create() ?>
                         <fieldset>
