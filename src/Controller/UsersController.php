@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Users Controller
@@ -22,6 +23,12 @@ class UsersController extends AppController
         $encontrado = false;
         $_SESSION['rol'] = "";
         $_SESSION['user'] = "false";
+
+        //Vamos a mostrar los spónsores
+        $query = TableRegistry::get('Sponsors');
+        $sponsor = $query->find();
+        $this->set('sponsor', $sponsor);
+
 
         if ($this->request->is(['patch', 'post', 'put']))
             {

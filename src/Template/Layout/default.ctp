@@ -13,7 +13,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Liga Comarcal Fútbol Sala Alcoy';
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,7 +34,12 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
-<body>
+<body 
+    <?php if(!isset ($_SESSION['usuario'])): ?>
+        background="webroot/files/fondo2.jpg">
+    <?php else: ?>
+        >
+    <?php endif;?>
  
     <?= $this->element('menu'); ?>
     <?= $this->Flash->render() ?>

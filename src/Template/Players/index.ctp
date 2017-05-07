@@ -5,7 +5,7 @@
 ?>
 
 <div class="container">
-<div class="row">
+<div class="row contenido">
     <div class="col-md-12">
     <?php if(isset ($_SESSION['usuario']) and $_SESSION['rol'] == "admin"): ?>
         <div class="page-header">

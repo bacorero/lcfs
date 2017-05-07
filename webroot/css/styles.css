@@ -1,7 +1,11 @@
 .sponsores{
-	border: 1px solid ;
+	margin-top: 10px;
+	
 }
 
 .publico{
 	border: 1px solid ;
+}
+.contenido{
+	background-color: #FFF;
 }

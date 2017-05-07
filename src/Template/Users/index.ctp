@@ -62,7 +62,18 @@
             <div class="row" style="margin-top:20px">
 
             <!-- cuadro de los sponsores -->
-                <div class="col-xs-3 col-sm-3 col-md-3 sponsores">
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <h3>PATROCINADORES</h3>
+                        <?php foreach ($sponsor as $key): ?>
+                            <div class="sponsores">
+                                <?php if($key->active == 1): ?>
+                                    <?= $this->Html->image('../files/sponsors/photo/'. $key->photo_dir .
+                                    '/square_' . $key->photo, ['alt' => $key->nombre, 'class' => 'img-responsive img-thumnail center-block']) ?>
+                                    <hr>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    
                 </div>
 
             <!-- Cuadro de los anuncios púplicos -->
