@@ -230,9 +230,9 @@ return [
              */
             //'port' => 'non_standard_port_number',
 
-            'username' => 'id1352705_lcfs',
+            'username' => 'id1555169_lcfs',
             'password' => 'cacharroS',
-            'database' => 'id1352705_lcfs',
+            'database' => 'id1555169_lcfs',
 
             /*
             'username' => 'root',

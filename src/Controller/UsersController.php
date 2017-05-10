@@ -29,6 +29,8 @@ class UsersController extends AppController
         $sponsor = $query->find();
         $this->set('sponsor', $sponsor);
 
+        //Parseamos las páginas web pasadas
+        $this->set('contenido', $this->parser());
 
         if ($this->request->is(['patch', 'post', 'put']))
             {
@@ -63,6 +65,11 @@ class UsersController extends AppController
             else
             {
                 $this->Flash->error(__('Nombre de usuario o contraseña incorrectos'));
+                unset($_SESSION['usuario']); 
+                //unset($_SESSION['password']);
+                //unset($_SESSION['rol']);
+                //unset($_SESSION['user']);
+                //session_destroy();
             }
         }
     }
@@ -196,5 +203,17 @@ class UsersController extends AppController
         unset($_SESSION['user']);
         session_destroy();
         return $this->redirect(['action' => 'index']);
+    }
+
+    //Función que parsea una página web
+    public function parser()
+    {
+        //$contenido = "<h3>AQUI VAN LOS ARTICULOS</h3><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> ";    
+       $file = "http://localhost/lcfs/webroot/files/contenido/index.html";       //Abro el fichero en modo lectura
+        $fp = fopen($file,"r");
+        $contenido = fread($fp, 300);
+        fclose($fp); 
+        return $contenido;
+
     }
 }

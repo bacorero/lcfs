@@ -62,7 +62,7 @@
             <div class="row" style="margin-top:20px">
 
             <!-- cuadro de los sponsores -->
-                <div class="col-xs-3 col-sm-3 col-md-3">
+                <div class="col-xs-12 col-sm-3 col-md-3">
                     <h3>PATROCINADORES</h3>
                         <?php foreach ($sponsor as $key): ?>
                             <div class="sponsores">
@@ -77,11 +77,13 @@
                 </div>
 
             <!-- Cuadro de los anuncios púplicos -->
-                <div class="col-xs-6 col-sm-6 col-md-6  publico">
+                <div align="center" class="col-xs-12 col-sm-7 col-md-7  publico">
+                 <!--   <iframe src="webroot/files/contenido/index.html" width=450 height="600" frameborder=1 scrolling="auto"></iframe> -->
+                    <?php echo $contenido; ?>
                 </div>
 
             <!--Cuadro de logueo -->
-                <div class="col-xs-3 col-sm-3 col-md-3">
+                <div class="col-xs-6 col-sm-2 col-md-2">
                     
                     <?= $this->Form->create() ?>
                         <fieldset>
