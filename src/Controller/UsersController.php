@@ -202,7 +202,7 @@ class UsersController extends AppController
         unset($_SESSION['rol']);
         unset($_SESSION['user']);
         session_destroy();
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller' => 'Inicios', 'action' => 'index']);
     }
 
     //Función que parsea una página web

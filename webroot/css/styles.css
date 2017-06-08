@@ -1,10 +1,18 @@
+body {
+
+/* Ubicación de la imagen */
+
+background-image: url(../webroot/img/fondo2.jpg);
+background-color: #66999;
+}
+
 .sponsores{
 	margin-top: 5px;
 	
 }
 
 .publico{
-	border: 1px solid ;
+	 ;
 }
 .contenido{
 	background-color: #FFF;

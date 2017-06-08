@@ -7,10 +7,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <?= $this->Html->link('INICIO', ['controller' => 'Users', 'action' => 'index'], ['class' => 'navbar-brand']) ?>
+            <?= $this->Html->link('INICIO', ['controller' => 'Inicios', 'action' => 'index'], ['class' => 'navbar-brand']) ?>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+        <?php if(isset($_SESSION['rol'])): ?>
             <?php if($_SESSION['rol'] == 'admin'): ?>
                 <ul class="nav navbar-nav">
                     <?php if($_SESSION['rol'] == "admin"): ?>
@@ -128,13 +129,176 @@
                    <?= $this->Html->link('Salir', ['controller' => 'Users', 'action' => 'logout']) ?>
               </li>
             </ul>
-            <?php else: ?>
+            <?php endif; ?>
+        <?php else: ?>
+            <!-- Añado menu público -->
+            <ul class="nav navbar-nav">
+
+            <!-- MENU DIVISION DE HONOR -->
+                <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Honor<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <?=  $this->Html->link('Resultados', ['controller' => 'Inicios', 'action' => 'clasificacion1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Clasificación', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Goleadores', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Sanciones', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Listado Tarjetas', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Calendario', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                        </ul>
+                    </li>
+
+                <!-- MENU PRIMERA DIVISION  -->
+                <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Primera<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <?=  $this->Html->link('Resultados', ['controller' => 'Inicios', 'action' => 'clasificacion1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Clasificación', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Goleadores', ['controller' => 'Inicios', 'action' => 'goleadores1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Sanciones', ['controller' => 'Inicios', 'action' => 'deporjugadores1']) ?>
+
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Listado Tarjetas', ['controller' => 'Inicios', 'action' => 'tarjetasjugadores1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Calendario', ['controller' => 'Inicios', 'action' => 'jornadas']) ?>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- MENU SEGUNDA DIVISION -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Segunda<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <?=  $this->Html->link('Resultados', ['controller' => 'Inicios', 'action' => 'clasificacion1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Clasificación', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Goleadores', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Sanciones', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Listado Tarjetas', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Calendario', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- MENU TERCERA DIVISION -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tercera<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <?=  $this->Html->link('Resultados', ['controller' => 'Inicios', 'action' => 'clasificacion1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Clasificación', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Goleadores', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Sanciones', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Listado Tarjetas', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Calendario', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- MENU TORNEOS -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Torneos<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <?=  $this->Html->link('Copa', ['controller' => 'Inicios', 'action' => 'clasificacion1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('24 Hores Concentaina', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('3D Alcoi', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('24H Liga Comarcal', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Torneig Comarcal', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                            <li>
+                                <?=  $this->Html->link('Trofeu Filaes', ['controller' => 'Inicios', 'action' => 'deportividad1']) ?>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- MENU CALENDARIO -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Calendario<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <?=  $this->Html->link('Calendario', ['controller' => 'Inicios', 'action' => 'clasificacion1']) ?>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- MENU SEGURO -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Seguro<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <?=  $this->Html->link('Seguro', ['controller' => 'Inicios', 'action' => 'clasificacion1']) ?>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- MENU NORMATIVA -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Normativa<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <?=  $this->Html->link('Normativa', ['controller' => 'Inicios', 'action' => 'clasificacion1']) ?>
+                            </li>
+                        </ul>
+                    </li>
+            </ul>
+
+            <!-- Parte pública para acceder al sistema -->
             <ul class="nav navbar-nav navbar-right">
               <li>
-                   <?= $this->Html->link('Registrarse', ['controller' => 'Users', 'action' => 'add']) ?>
+                   <?= $this->Html->link('Login', ['controller' => 'Users', 'action' => 'index']) ?>
               </li>
             </ul>
-            <?php endif; ?>
+        
+    <?php endif; ?>
         </div>
     </div>
 </nav>

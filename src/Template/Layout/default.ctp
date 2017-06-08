@@ -36,7 +36,7 @@ $cakeDescription = 'Liga Comarcal Fútbol Sala Alcoy';
 </head>
 <body 
     <?php if(!isset ($_SESSION['usuario'])): ?>
-        background="webroot/files/fondo2.jpg"
+       
     <?php endif;?>
     >
  
